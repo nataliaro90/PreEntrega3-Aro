@@ -10,7 +10,7 @@ class Tarea {
 let Tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
 const guardarTareas = () => {
-        localStorage.setItem("tareas", JSON.stringify(Tareas));
+    localStorage.setItem("tareas", JSON.stringify(Tareas));
 }
 
 const mostrarTareas = () => {
@@ -21,8 +21,7 @@ const mostrarTareas = () => {
         const { descripcion, date, hour, realizada } = tarea;
         const tareaItem = document.createElement("li");
         const taskHtml = `<span>${descripcion} - ${date} - ${hour}</span>
-            ${!realizada ? `<button onclick="marcarRealizada(${index})" class="button-realizar">Marcar como realizada</button>` : `<button disabled class="button-realizada">Realizada</button>`
-            }
+            ${!realizada ? `<button onclick="marcarRealizada(${index})" class="button-realizar">Marcar como realizada</button>` : `<button disabled class="button-realizada">Realizada</button>`}
             <button onclick="eliminarTarea(${index})" class="button-eliminar">Eliminar</button>`;
         tareaItem.innerHTML = taskHtml;
         taskList.appendChild(tareaItem);
@@ -33,17 +32,25 @@ const agregarTarea = () => {
     const descripcion = document.getElementById("taskDescription").value;
     const date = document.getElementById("taskDate").value;
     const hour = document.getElementById("taskTime").value;
+    const errorMessage = document.getElementById("errorMessage");
+
     if (!descripcion || !date || !hour) {
-        alert("Por favor, complete todos los campos.");
+        errorMessage.textContent = "Por favor, complete todos los campos.";
+        errorMessage.style.display = "block";
         return;
     }
+    
+    errorMessage.style.display = "none";
+    
     const nuevaTarea = new Tarea(descripcion, date, hour);
-    Tareas = [...Tareas, nuevaTarea];
+    Tareas.push(nuevaTarea);
     guardarTareas();
     mostrarTareas();
-    document.getElementById("taskForm").reset();
+    
+    document.getElementById("taskFormElement").reset();
     document.getElementById("taskForm").style.display = "none";
 }
+
 const marcarRealizada = (index) => {
     Tareas[index].realizada = true;
     guardarTareas();
@@ -57,7 +64,7 @@ const eliminarTarea = (index) => {
 }
 
 document.getElementById("addTaskButton").addEventListener("click", () => {
-        document.getElementById("taskForm").style.display = "block";
+    document.getElementById("taskForm").style.display = "block";
 });
 
 document.getElementById("saveTaskButton").addEventListener("click", agregarTarea);

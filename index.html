@@ -13,10 +13,13 @@
             <button id="addTaskButton" class="button">Agregar nueva tarea</button>
         </div>
         <div id="taskForm" class="form" style="display: none;">
-            <input type="text" id="taskDescription" class="input" placeholder="Descripción de la tarea">
-            <input type="date" id="taskDate" class="input">
-            <input type="time" id="taskTime" class="input">
-            <button id="saveTaskButton" class="button">Guardar Tarea</button>
+            <form id="taskFormElement">
+                <input type="text" id="taskDescription" class="input" placeholder="Descripción de la tarea" required>
+                <input type="date" id="taskDate" class="input" required>
+                <input type="time" id="taskTime" class="input" required>
+                <button type="button" id="saveTaskButton" class="button">Guardar Tarea</button>
+                <p id="errorMessage" class="error-message"></p>
+            </form>
         </div>
         <div class="task-list">
             <h2 class="subtitle">Tareas pendientes</h2>

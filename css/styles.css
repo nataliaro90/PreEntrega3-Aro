@@ -58,9 +58,9 @@ body {
 
 .input {
     font-family: 'Roboto', sans-serif;
-    width: calc(33.33% - 10px);
+    width: 100%;
     padding: 8px;
-    margin-right: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
@@ -97,7 +97,6 @@ body {
     background-color: #d9f2e6;
 }
 
-/* Botón "Marcar como realizada" */
 .button-realizar {
     background-color: #ffd699;
     color: #ffffff;
@@ -112,7 +111,6 @@ body {
     background-color: #ffa94d;
 }
 
-/* Botón "Realizada" */
 .button-realizada {
     background-color: #a0e7a0;
     color: #ffffff;
@@ -120,4 +118,10 @@ body {
     border: none;
     border-radius: 5px;
     cursor: not-allowed;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
 }
